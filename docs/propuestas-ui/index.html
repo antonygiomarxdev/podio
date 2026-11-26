@@ -1,0 +1,137 @@
+<title>Propuestas de podio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: neutral frame page, three 400px phone frames side by side (wrap on narrow). Each frame uses podio's fixed identity. */
+:root{--bg:#F3F4F1;--fg:#141715;--muted:#555C55;--line:#C9CEC6;--card:#FFFFFF;--sans:"Instrument Sans",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
+/* podio identity (D-6), same in both themes */
+--p-bg:#0B0D0C;--p-surface:#141715;--p-text:#E8EAE6;--p-muted:#8B918A;--p-border:#262B27;--p-lime:#B6F23A;--p-amber:#F2A93A}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1110;--fg:#E8EAE6;--muted:#9AA19A;--line:#2B312C;--card:#171A18;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1110;--fg:#E8EAE6;--muted:#9AA19A;--line:#2B312C;--card:#171A18;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:16px/1.5 var(--sans);padding-block:32px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.page{max-width:1360px;margin:0 auto}
+h1{font-size:2rem;margin:0 0 8px;text-wrap:balance}
+.lead{max-width:65ch;color:var(--muted);margin:0 0 8px}
+.fixed{max-width:65ch;color:var(--muted);font-size:.9rem;margin:0 0 32px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:40px 24px;justify-items:center;align-items:start}
+.prop{width:100%;max-width:400px;min-width:0}
+.prop h2{font-size:1.25rem;margin:0}
+.tag{font:700 .75rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.idea,.trade{margin:4px 0 0;font-size:.9rem;color:var(--muted)}
+.idea b,.trade b{color:var(--fg);font-weight:600}
+.phone{margin-top:16px;width:100%;background:var(--p-bg);color:var(--p-text);border:1px solid var(--line);border-radius:24px;padding:20px 16px 16px;overflow:hidden}
+.phone a,.phone button,.phone select{font:inherit;color:inherit}
+.phone :focus-visible{outline:2px solid var(--p-amber);outline-offset:2px}
+.phone .sample{border:1px solid var(--p-amber);color:var(--p-amber);border-radius:4px;padding:4px 8px;font-size:.8rem;margin-bottom:12px;display:inline-block}
+.phone .tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:8px}
+.phone .tabs button{flex:none;background:var(--p-surface);color:var(--p-muted);border:1px solid var(--p-border);border-radius:4px;padding:6px 10px;font-size:.85rem;cursor:pointer;white-space:nowrap}
+.phone .tabs button[aria-selected=true]{background:var(--p-lime);border-color:var(--p-lime);color:var(--p-bg);font-weight:600}
+.phone .country{display:flex;gap:8px;align-items:center;color:var(--p-muted);font-size:.85rem;margin-bottom:16px}
+.phone select{background:var(--p-surface);border:1px solid var(--p-border);border-radius:4px;padding:4px 8px;font-size:.85rem}
+.av{display:inline-flex;flex:none;align-items:center;justify-content:center;border-radius:50%;background:var(--p-surface);border:2px solid var(--p-border);color:var(--p-muted);font-weight:700;width:36px;height:36px;font-size:.85rem}
+.num{font-family:var(--mono);font-weight:700}
+.pos{color:var(--p-amber)}
+.val{color:var(--p-lime)}
+.nm{min-width:0;overflow-wrap:anywhere}
+.lg{color:var(--p-muted);font-size:.8rem}
+.sum{color:var(--p-muted);font-family:var(--mono);font-size:.7rem;margin-top:2px}
+.fresh{color:var(--p-muted);font-size:.8rem;margin:16px 0 0;border-top:1px solid var(--p-border);padding-top:12px}
+.fresh b{color:var(--p-text);font-weight:600}
+.podium{list-style:none;margin:0 0 16px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;align-items:end}
+.podium li:nth-child(1){order:2}.podium li:nth-child(2){order:1}.podium li:nth-child(3){order:3}
+.podium .av{margin:0 auto 6px}
+.podium .c{text-align:center;overflow-wrap:anywhere;font-size:.85rem}
+.podium .c .num{display:block}
+.rows{list-style:none;margin:0;padding:0}
+.rows li{display:grid;grid-template-columns:24px 36px minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--p-border)}
+.rows .nm b{font-weight:600}
+/* A terminal */
+.A{font-family:var(--mono);font-size:.82rem}
+.A .hd{color:var(--p-lime);margin-bottom:10px}.A .hd i{color:var(--p-muted);font-style:normal}
+.A .tabs button{font-family:var(--mono);font-size:.75rem}
+.A .tabs button[aria-selected=true]::before{content:"> "}
+.A .podium li{background:var(--p-surface);border:1px solid var(--p-border);border-radius:4px;padding:10px 4px}
+.A .podium li:nth-child(1){border-color:var(--p-lime);padding-bottom:20px}
+.A .podium .av{border-radius:4px}.A .av{border-radius:4px;font-family:var(--mono)}
+.A .rows li{padding:6px 0;grid-template-columns:20px 28px minmax(0,1fr) auto}
+.A .rows .av{width:28px;height:28px;font-size:.75rem}
+.A .lg{font-size:.75rem}
+.A .fresh{font-family:var(--mono);font-size:.72rem}
+/* B hall of fame */
+.B .hd{text-align:center;margin:4px 0 20px}
+.B .hd h3{font-size:2.5rem;line-height:1;margin:0;color:var(--p-lime);letter-spacing:-.02em}
+.B .hd p{margin:6px 0 0;color:var(--p-muted);font-size:.9rem}
+.B .podium{gap:6px;margin-bottom:24px}
+.B .podium li{text-align:center}
+.B .podium .av{width:56px;height:56px;font-size:1.25rem}
+.B .podium li:nth-child(1) .av{width:72px;height:72px;font-size:1.5rem;border-color:var(--p-lime)}
+.B .podium .c{font-size:.95rem;font-weight:700;margin-bottom:6px}
+.B .podium .c .lg{font-weight:400;display:block}
+.B .stage{background:var(--p-surface);border:1px solid var(--p-border);border-radius:8px 8px 0 0;padding:10px 4px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.B .podium li:nth-child(1) .stage{height:96px;border-color:var(--p-lime)}
+.B .podium li:nth-child(2) .stage{height:68px}
+.B .podium li:nth-child(3) .stage{height:52px}
+.B .stage .pos{font-size:1.5rem}
+.B .stage .val{font-size:.95rem}
+.B .rows li{padding:14px 0}
+.B .chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.B .chips span{border:1px solid var(--p-border);border-radius:4px;padding:1px 6px;font:500 .7rem var(--mono);color:var(--p-muted)}
+.B .tabs button,.B .phone select{border-radius:8px}
+.B .fresh{text-align:center}
+/* C blend */
+.C .hd{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:12px}
+.C .hd h3{font-size:1.75rem;margin:0;color:var(--p-lime);letter-spacing:-.02em;line-height:1.2}
+.C .hd span{font:500 .75rem var(--mono);color:var(--p-muted)}
+.C .podium li{background:var(--p-surface);border:1px solid var(--p-border);border-radius:8px;padding:12px 4px 10px;border-top:3px solid var(--p-border)}
+.C .podium li:nth-child(1){padding-bottom:22px;border-top-color:var(--p-lime)}
+.C .podium .pos{font-size:.85rem}
+.C .podium .val{font-size:1.05rem}
+.C .podium li:nth-child(1) .av{border-color:var(--p-lime)}
+.C .rows li{padding:8px 0}
+.C .fresh::before{content:"// ";font-family:var(--mono);color:var(--p-amber)}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+<div class="page">
+<h1>Propuestas de podio</h1>
+<p class="lead">Tres formas de mostrar el ranking en el celular. Elegí la que más te guste, o decinos qué mezclarías.</p>
+<p class="fixed">En las tres: el podio literal (2.º, 1.º, 3.º), la lista desde el 4.º, el valor de la categoría elegida y un resumen de las otras categorías en cada fila. Colores y tipografías de podio fijos. Datos de ejemplo, personas inventadas.</p>
+<div class="grid" id="grid"></div>
+</div>
+<script>
+const P=[
+ {n:'Ana Cruz',l:'anacruz',c:'NI',v:2310,s:[14,61,22,340]},
+ {n:'Lucas Gómez',l:'lgomez',c:'AR',v:1950,s:[9,48,17,212]},
+ {n:'Valeria Ríos',l:'valeria-dev',c:'CO',v:1640,s:[31,31,9,87]},
+ {n:'Mateo Salas',l:'msalas',c:'MX',v:1284,s:[5,40,12,155]},
+ {n:'Camila Torres',l:'camitorres',c:'CL',v:1102,s:[22,36,6,64]},
+ {n:'Diego Paredes',l:'dparedes',c:'PE',v:987,s:[3,29,4,23]}];
+const CATS=['Contribuciones del año','Racha actual','Racha más larga','PRs a otros repos','Estrellas'];
+const flag=c=>String.fromCodePoint(...[...c].map(x=>0x1f1e6+x.charCodeAt(0)-65));
+const nf=new Intl.NumberFormat('es');
+const ini=p=>p.n[0];
+const sumTxt=p=>`racha ${p.s[0]}d · máx ${p.s[1]}d · PRs ${p.s[2]} · ★ ${nf.format(p.s[3])}`;
+const chips=p=>`<div class="chips"><span>racha ${p.s[0]}d</span><span>máx ${p.s[1]}d</span><span>PRs ${p.s[2]}</span><span>★ ${nf.format(p.s[3])}</span></div>`;
+const tabs=k=>`<div class="tabs" role="tablist" aria-label="Categoría">${CATS.map((c,i)=>`<button role="tab" aria-selected="${i==0}">${c}</button>`).join('')}</div>`;
+const ctry=k=>`<label class="country" for="pais-${k}">País <select id="pais-${k}"><option>Todos</option><option>${flag('AR')} AR</option><option>${flag('NI')} NI</option><option>${flag('CO')} CO</option></select></label>`;
+const fresh=k=>{const t='Actualizado: 25/11/2026, 06:00';const lim='Cuenta todas tus contribuciones del calendario de GitHub, últimos 12 meses. Se puede inflar con commits automáticos.';
+ return k=='A'?`<p class="fresh">$ actualizado 2026-11-25 06:00 UTC<br>nota: contribuciones del calendario de GitHub, 12 meses. Se puede inflar con commits automáticos.</p>`:`<p class="fresh"><b>${t}</b><br>${lim}</p>`};
+const sample='<span class="sample">Datos de ejemplo: aún no hay ranking real.</span>';
+const av=p=>`<span class="av" aria-hidden="true">${ini(p)}</span>`;
+const who=(p)=>`<b>${flag(p.c)} ${p.n}</b><div class="lg">@${p.l}</div>`;
+function rows(k){return `<ol class="rows" start="4">${P.slice(3).map((p,i)=>`<li><span class="num pos">${i+4}</span>${av(p)}<div class="nm">${who(p)}${k=='B'?chips(p):`<div class="sum">${sumTxt(p)}</div>`}</div><span class="num val">${nf.format(p.v)}</span></li>`).join('')}</ol>`}
+function podium(k){
+ if(k=='B')return `<ol class="podium">${P.slice(0,3).map((p,i)=>`<li><div class="c">${av(p)}<div>${flag(p.c)} ${p.n}</div><span class="lg">@${p.l}</span></div><div class="stage"><span class="num pos">${i+1}</span><span class="num val">${nf.format(p.v)}</span></div></li>`).join('')}</ol>`;
+ return `<ol class="podium">${P.slice(0,3).map((p,i)=>`<li><div class="c">${av(p)}<span class="num pos">${k=='A'?'#'+(i+1):'#'+(i+1)}</span><div>${flag(p.c)} ${p.n}</div><span class="lg">@${p.l}</span><span class="num val">${nf.format(p.v)}</span><div class="sum">${p.s[0]}d · ${p.s[1]}d · ${p.s[2]} · ★${nf.format(p.s[3])}</div></div></li>`).join('')}</ol>`}
+const hd={A:'<div class="hd">$ podio --top 20 --pais todos <i>_</i></div>',
+ B:'<div class="hd"><h3>Podio</h3><p>Los desarrolladores de Latinoamérica que más aportan en GitHub.</p></div>',
+ C:'<div class="hd"><h3>Podio</h3><span>top · 12 meses</span></div>'};
+const meta={
+ A:['A','Terminal','Es una consola: monoespaciado, etiquetas como comandos, mucho dato en poco espacio.','Lo más denso y con más identidad dev. Se lee menos fácil para quien no es dev y el top se siente menos celebración.'],
+ B:['B','Salón de la fama','Un escenario: nombres grandes, el podio con peldaños de distinto alto y más aire entre filas.','El top se luce y el resumen de categorías cabe en chips. Entran menos personas por pantalla y es menos "de dev".'],
+ C:['C','Mezcla','Texto en Instrument Sans y números en monoespaciado; podio en peldaños compactos y filas densas con un guiño de consola.','Un punto medio: se ve el top y entran filas. Es la menos extrema, así que arriesga ser la menos memorable.']};
+document.getElementById('grid').innerHTML=['A','B','C'].map(k=>`<section class="prop"><div class="tag">Propuesta ${meta[k][0]}</div><h2>${meta[k][1]}</h2><p class="idea"><b>Idea:</b> ${meta[k][2]}</p><p class="trade"><b>A cambio:</b> ${meta[k][3]}</p><div class="phone ${k}">${sample}${hd[k]}${tabs(k)}${ctry(k)}${podium(k)}${rows(k)}${fresh(k)}</div></section>`).join('');
+document.querySelectorAll('.tabs').forEach(t=>t.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;t.querySelectorAll('button').forEach(x=>x.setAttribute('aria-selected',x===b))}));
+</script>

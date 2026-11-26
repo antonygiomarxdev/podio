@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Filtro de país abierto</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:"Instrument Sans",system-ui,sans-serif}
+.ph{width:400px;min-height:1000px;box-sizing:border-box;background:#0B0D0C;color:#E8EAE6;padding:20px 16px 24px;font-size:16px;line-height:1.5}
+.sample{display:inline-block;border:1px solid #F2A93A;color:#F2A93A;border-radius:4px;padding:4px 8px;font-size:12.8px;margin-bottom:12px}
+.hd{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.hd h1{margin:0;font-size:28px;line-height:1.2;letter-spacing:-.02em;color:#B6F23A}
+.meta{font:500 12px "JetBrains Mono",monospace;color:#8B918A}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:8px}
+.tab{flex:none;white-space:nowrap;background:#141715;color:#8B918A;border:1px solid #262B27;border-radius:4px;padding:6px 10px;font:inherit;font-size:13.6px}
+.tab.on{background:#B6F23A;border-color:#B6F23A;color:#0B0D0C;font-weight:600}
+.lab{display:flex;gap:8px;align-items:center;color:#8B918A;font-size:13.6px;margin-bottom:6px}
+.btn{background:#141715;color:#E8EAE6;border:1px solid #262B27;border-radius:4px;padding:4px 8px;font:inherit;font-size:13.6px}
+.list{list-style:none;margin:0;padding:4px 0;background:#141715;border:1px solid #262B27;border-radius:8px}
+.list li{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:5px 12px;font-size:14.4px}
+.list li.sel{background:#262B27;font-weight:600}
+.list .none{color:#8B918A;font-size:12.8px;white-space:nowrap}
+.list li.empty{color:#8B918A}
+.hint{color:#8B918A;font-size:12.8px;margin:12px 0 0}
+.hint::before{content:"// ";font-family:"JetBrains Mono",monospace;color:#F2A93A}
+</style>
+</helmet>
+<div class="ph">
+  <span class="sample">Datos de ejemplo: aún no hay ranking real.</span>
+  <div class="hd"><h1>Podio</h1><span class="meta">top · 12 meses</span></div>
+  <div class="tabs" role="tablist" aria-label="Categoría">
+    <button type="button" role="tab" aria-selected="true" class="tab on">Contribuciones del año</button>
+    <button type="button" role="tab" aria-selected="false" class="tab">Racha actual</button>
+    <button type="button" role="tab" aria-selected="false" class="tab">Racha más larga</button>
+    <button type="button" role="tab" aria-selected="false" class="tab">PRs a otros repos</button>
+    <button type="button" role="tab" aria-selected="false" class="tab">Estrellas</button>
+  </div>
+  <div class="lab">País <span class="btn">Todos ▾</span></div>
+  <ul class="list" role="listbox" aria-label="País">
+    <li class="sel" role="option" aria-selected="true">Todos</li>
+    <li role="option">🇦🇷 Argentina</li>
+    <li role="option">🇧🇴 Bolivia</li>
+    <li class="empty" role="option">🇧🇷 Brasil <span class="none">sin miembros todavía</span></li>
+    <li role="option">🇨🇱 Chile</li>
+    <li role="option">🇨🇴 Colombia</li>
+    <li class="empty" role="option">🇨🇷 Costa Rica <span class="none">sin miembros todavía</span></li>
+    <li class="empty" role="option">🇨🇺 Cuba <span class="none">sin miembros todavía</span></li>
+    <li class="empty" role="option">🇪🇨 Ecuador <span class="none">sin miembros todavía</span></li>
+    <li class="empty" role="option">🇸🇻 El Salvador <span class="none">sin miembros todavía</span></li>
+    <li class="empty" role="option">🇬🇹 Guatemala <span class="none">sin miembros todavía</span></li>
+    <li class="empty" role="option">🇭🇳 Honduras <span class="none">sin miembros todavía</span></li>
+    <li role="option">🇲🇽 México</li>
+    <li role="option">🇳🇮 Nicaragua</li>
+    <li class="empty" role="option">🇵🇦 Panamá <span class="none">sin miembros todavía</span></li>
+    <li class="empty" role="option">🇵🇾 Paraguay <span class="none">sin miembros todavía</span></li>
+    <li role="option">🇵🇪 Perú</li>
+    <li class="empty" role="option">🇵🇷 Puerto Rico <span class="none">sin miembros todavía</span></li>
+    <li class="empty" role="option">🇩🇴 República Dominicana <span class="none">sin miembros todavía</span></li>
+    <li role="option">🇺🇾 Uruguay</li>
+    <li class="empty" role="option">🇻🇪 Venezuela <span class="none">sin miembros todavía</span></li>
+  </ul>
+  <p class="hint">Están los 20 países. Si elegís uno sin miembros, te invitamos a sumarte.</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":400,"height":1000}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

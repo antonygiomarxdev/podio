@@ -1,0 +1,129 @@
+<title>Paletas de podio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: neutral frame page; per palette a 400px phone (direction C) plus token and contrast tables. Palettes are scoped custom properties on each phone. */
+:root{--bg:#F3F4F1;--fg:#141715;--muted:#555C55;--line:#C9CEC6;--card:#FFFFFF;--sans:"Instrument Sans",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1110;--fg:#E8EAE6;--muted:#9AA19A;--line:#2B312C;--card:#171A18;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1110;--fg:#E8EAE6;--muted:#9AA19A;--line:#2B312C;--card:#171A18;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:16px/1.5 var(--sans);padding-block:32px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.page{max-width:1360px;margin:0 auto}
+h1{font-size:2rem;margin:0 0 8px;text-wrap:balance}
+.lead,.fixed{max-width:70ch;color:var(--muted);margin:0 0 8px}
+.fixed{font-size:.9rem;margin-bottom:32px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:48px 24px;justify-items:center;align-items:start}
+.prop{width:100%;max-width:400px;min-width:0}
+.prop h2{font-size:1.25rem;margin:0}
+.tag{font:700 .75rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.idea,.trade{margin:4px 0 0;font-size:.9rem;color:var(--muted)}
+.idea b,.trade b{color:var(--fg);font-weight:600}
+.tbl{width:100%;overflow-x:auto;margin-top:16px}
+.tbl h3{font-size:.85rem;margin:0 0 6px}
+table{border-collapse:collapse;width:100%;font-size:.8rem}
+th,td{text-align:left;padding:5px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600}
+td.m{font-family:var(--mono);white-space:nowrap}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px;border:1px solid var(--line);vertical-align:-1px;margin-right:6px}
+.ok{font-weight:700}
+.phone{margin-top:16px;width:100%;background:var(--bg-p);color:var(--text-p);border:1px solid var(--line);border-radius:24px;padding:20px 16px 16px;overflow:hidden;font-size:16px}
+.phone :focus-visible{outline:2px solid var(--pos-p);outline-offset:2px}
+.sample{display:inline-block;border:1px solid var(--pos-p);color:var(--pos-p);border-radius:4px;padding:4px 8px;font-size:.8rem;margin-bottom:12px}
+.hd{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.hd h4{margin:0;font-size:1.75rem;line-height:1.2;letter-spacing:-.02em;color:var(--acct-p)}
+.hd span{font:500 .75rem var(--mono);color:var(--muted-p)}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:12px}
+.tabs button{flex:none;white-space:nowrap;background:var(--surface-p);color:var(--muted-p);border:1px solid var(--border-p);border-radius:4px;padding:6px 10px;font:inherit;font-size:.85rem}
+.tabs button[aria-selected=true]{background:var(--accent-p);border-color:var(--accent-p);color:var(--on-p);font-weight:600}
+.podium{list-style:none;margin:0 0 8px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;align-items:end}
+.podium li{background:var(--surface-p);border:1px solid var(--border-p);border-top:3px solid var(--c);border-radius:8px;padding:12px 4px 10px;text-align:center;overflow-wrap:anywhere;font-size:.85rem}
+.podium li:nth-child(1){order:2;padding-bottom:22px;--c:var(--oro-p)}
+.podium li:nth-child(2){order:1;--c:var(--plata-p)}
+.podium li:nth-child(3){order:3;--c:var(--cobre-p)}
+.av{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;border:2px solid var(--border-p);background:var(--surface-p);color:var(--muted-p);font-weight:700;font-size:.85rem}
+.podium li .av{border-color:var(--c);margin-bottom:6px}
+.n{font-family:var(--mono);font-weight:700}
+.pos{color:var(--pos-p)}.val{color:var(--acct-p)}
+.podium .pos,.podium .val{display:block}.podium .val{font-size:1.05rem}
+.lg{color:var(--muted-p);font-size:.8rem}
+.sum{color:var(--muted-p);font:500 .75rem/1.4 var(--mono);margin-top:2px}
+.rows{list-style:none;margin:0;padding:0}
+.rows li{display:grid;grid-template-columns:24px 36px minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border-p)}
+.rows b{font-weight:600}
+.fresh{color:var(--muted-p);font-size:.8rem;margin:16px 0 0;border-top:1px solid var(--border-p);padding-top:12px}
+.fresh::before{content:"// ";font-family:var(--mono);color:var(--pos-p)}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+<div class="page">
+<h1>Paletas de podio</h1>
+<p class="lead">Tres paletas posibles para podio, puestas sobre la misma pantalla de la dirección C. Cada color lleva el nombre de lo que lo inspira: pigmentos, paisajes y metales que se comparten en toda la región, sin banderas ni colores de ningún país.</p>
+<p class="fixed">Se mantienen la dirección C y las tipografías (Instrument Sans y JetBrains Mono). Las medallas se distinguen por claridad, no solo por tono, y llevan siempre el número de puesto al lado. Datos de ejemplo, personas inventadas. Las cifras de contraste están calculadas en esta página con la fórmula WCAG 2.</p>
+<div class="grid" id="grid"></div>
+</div>
+<script>
+const P=[
+{k:'A',name:'Añil y jade',idea:'Base nocturna de terminal en azul añil, con jade como color de marca y achiote para los puestos.',trade:'Es la más "dev" y la que mejor se lee de noche. Se parece a otros temas oscuros con acento verde, así que depende de los nombres y de los metales para sentirse propia.',
+ t:[['bg','Añil noche','#0B1020','Fondo. Tinte de añil (Indigofera), el azul que se extrae de la planta.'],
+    ['surface','Añil profundo','#131B30','Tarjetas, pestañas y selector.'],
+    ['text','Cal','#E6EAF2','Texto principal. Cal blanca de las paredes.'],
+    ['muted','Niebla andina','#8E9AB5','Texto secundario, resumen y @usuario.'],
+    ['border','Pizarra','#26324D','Bordes de 1px.'],
+    ['accent','Jade','#3DDC97','Relleno de la pestaña activa y botón. Piedra jade de las culturas mesoamericanas.'],
+    ['on-accent','Selva honda','#07140E','Texto sobre el relleno jade.'],
+    ['accent-2','Achiote','#F08A5D','Números de puesto y avisos. Semilla de achiote.'],
+    ['oro','Oro','#E3B341','Puesto 1, borde superior y avatar. Metal de la orfebrería precolombina.'],
+    ['plata','Plata','#F3F6FA','Puesto 2. La más clara de las tres.'],
+    ['cobre','Cobre','#C2703D','Puesto 3. La más oscura de las tres.']]},
+{k:'B',name:'Cacao y grana',idea:'Base cálida de cacao tostado con grana cochinilla como marca y jade para los puestos.',trade:'Se siente más a taller y a celebración que a consola, y se aleja de lo típico en dev. El rosa carmín es el color más atrevido de las tres y pide cuidado con los textos largos.',
+ t:[['bg','Cacao tostado','#15100D','Fondo. Grano de cacao tostado.'],
+    ['surface','Cacao molido','#1F1814','Tarjetas, pestañas y selector.'],
+    ['text','Harina de maíz','#F1E9E0','Texto principal.'],
+    ['muted','Ceniza de fogón','#A99A8B','Texto secundario, resumen y @usuario.'],
+    ['border','Barro oscuro','#3A2F27','Bordes de 1px.'],
+    ['accent','Grana cochinilla','#F0587F','Relleno de la pestaña activa, valores y botón. Carmín del insecto cochinilla, pigmento de los Andes y México.'],
+    ['on-accent','Cacao negro','#1A0509','Texto sobre el relleno grana.'],
+    ['accent-2','Jade','#5BD1A4','Números de puesto y avisos.'],
+    ['oro','Oro','#D9A21B','Puesto 1. Metal de la orfebrería precolombina.'],
+    ['plata','Plata','#F2F0EC','Puesto 2. La más clara de las tres.'],
+    ['cobre','Cobre','#B5663A','Puesto 3. La más oscura de las tres.']]},
+{k:'C',name:'Caribe y grana',idea:'Versión clara: espuma de mar de fondo, mar caribe como marca y grana cochinilla para los puestos.',trade:'No es terminal: se ve más abierta, de playa y de feria. Es la única clara, buena de día y para la comunidad que no es dev, pero pierde el aire de consola. La plata no llega a 3:1 sobre blanco y se apoya en el número.',
+ t:[['bg','Espuma de mar','#EAF3F2','Fondo. El borde blanco del mar Caribe.'],
+    ['surface','Cal','#FFFFFF','Tarjetas, pestañas y selector.'],
+    ['text','Selva profunda','#0E2A2D','Texto principal.'],
+    ['muted','Sombra de palma','#4A6569','Texto secundario, resumen y @usuario.'],
+    ['border','Arena mojada','#BFD3D3','Bordes de 1px.'],
+    ['accent','Mar caribe','#0F766E','Relleno de la pestaña activa, valores y botón. También sirve como texto.'],
+    ['on-accent','Cal','#FFFFFF','Texto sobre el relleno de mar caribe.'],
+    ['accent-2','Grana cochinilla','#A8153F','Números de puesto y avisos.'],
+    ['oro','Oro','#8F6400','Puesto 1. Oro viejo de la orfebrería.'],
+    ['plata','Plata','#98A6B0','Puesto 2. La más clara de las tres.'],
+    ['cobre','Cobre','#5E2A0E','Puesto 3. La más oscura de las tres.']]}];
+const lum=h=>{const c=[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)/255).map(v=>v<=.03928?v/12.92:((v+.055)/1.055)**2.4);return .2126*c[0]+.7152*c[1]+.0722*c[2]};
+const cr=(a,b)=>{const x=lum(a),y=lum(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05)};
+const people=[['A','Ana Cruz','anacruz','NI','2.310','racha 14d · máx 61d','PRs 22 · ★ 340'],['L','Lucas Gómez','lgomez','AR','1.950','racha 9d · máx 48d','PRs 17 · ★ 212'],['V','Valeria Ríos','valeria-dev','CO','1.640','racha 31d · máx 31d','PRs 9 · ★ 87']];
+const rest=[['M','Mateo Salas','msalas','MX','1.284','racha 5d · máx 40d · PRs 12 · ★ 155'],['C','Camila Torres','camitorres','CL','1.102','racha 22d · máx 36d · PRs 6 · ★ 64'],['D','Diego Paredes','dparedes','PE','987','racha 3d · máx 29d · PRs 4 · ★ 23']];
+const flag=c=>String.fromCodePoint(...[...c].map(x=>0x1f1e6+x.charCodeAt(0)-65));
+const cats=['Contribuciones del año','Racha actual','Racha más larga','PRs a otros repos','Estrellas'];
+const get=(p,n)=>p.t.find(r=>r[0]==n)[2];
+function contrast(p){
+ const g=n=>get(p,n);
+ const rows=[['Texto sobre fondo',g('text'),g('bg'),4.5],['Texto sobre tarjeta',g('text'),g('surface'),4.5],['Secundario sobre fondo',g('muted'),g('bg'),4.5],['Secundario sobre tarjeta',g('muted'),g('surface'),4.5],
+  ['Marca como texto sobre fondo',g('accent'),g('bg'),4.5],['Marca como texto sobre tarjeta',g('accent'),g('surface'),4.5],['Texto sobre relleno de marca',g('on-accent'),g('accent'),4.5],['Números de puesto sobre tarjeta',g('accent-2'),g('surface'),4.5],
+  ['Oro sobre tarjeta (marca)',g('oro'),g('surface'),3],['Plata sobre tarjeta (marca)',g('plata'),g('surface'),3],['Cobre sobre tarjeta (marca)',g('cobre'),g('surface'),3],
+  ['Oro frente a plata',g('oro'),g('plata'),1.5],['Plata frente a cobre',g('plata'),g('cobre'),1.5],['Oro frente a cobre',g('oro'),g('cobre'),1.5]];
+ return rows.map(([n,a,b,min])=>{const v=cr(a,b);return `<tr><td>${n}</td><td class="m">${v.toFixed(2)}:1</td><td>${v>=min?'<span class="ok">cumple</span> ':'<b>no llega</b> '}(mín. ${min})</td></tr>`}).join('')}
+function phone(p){
+ const g=n=>get(p,n);
+ const vars=`--bg-p:${g('bg')};--surface-p:${g('surface')};--text-p:${g('text')};--muted-p:${g('muted')};--border-p:${g('border')};--accent-p:${g('accent')};--on-p:${g('on-accent')};--acct-p:${g('accent')};--pos-p:${g('accent-2')};--oro-p:${g('oro')};--plata-p:${g('plata')};--cobre-p:${g('cobre')}`;
+ return `<div class="phone" style="${vars}"><span class="sample">Datos de ejemplo: aún no hay ranking real.</span><div class="hd"><h4>Podio</h4><span>top · 12 meses</span></div>
+ <div class="tabs" role="tablist" aria-label="Categoría">${cats.map((c,i)=>`<button type="button" role="tab" aria-selected="${i==0}">${c}</button>`).join('')}</div>
+ <ol class="podium">${people.map((x,i)=>`<li><span class="av">${x[0]}</span><span class="n pos">#${i+1}</span><div>${flag(x[3])} ${x[1]}</div><div class="lg">@${x[2]}</div><span class="n val">${x[4]}</span><div class="sum">${x[5]}<br>${x[6]}</div></li>`).join('')}</ol>
+ <ol class="rows" start="4">${rest.map((x,i)=>`<li><span class="n pos">${i+4}</span><span class="av">${x[0]}</span><div><b>${flag(x[3])} ${x[1]}</b><div class="lg">@${x[2]}</div><div class="sum">${x[5]}</div></div><span class="n val">${x[4]}</span></li>`).join('')}</ol>
+ <p class="fresh">Actualizado: 25/11/2026, 06:00. Se puede inflar con commits automáticos.</p></div>`}
+document.getElementById('grid').innerHTML=P.map(p=>`<section class="prop"><div class="tag">Paleta ${p.k}</div><h2>${p.name}</h2><p class="idea"><b>Idea:</b> ${p.idea}</p><p class="trade"><b>A cambio:</b> ${p.trade}</p>${phone(p)}
+<div class="tbl"><h3>Colores</h3><table><thead><tr><th>Nombre</th><th>Hex</th><th>Uso</th></tr></thead><tbody>${p.t.map(r=>`<tr><td>${r[1]}<br><span class="m" style="color:var(--muted)">${r[0]}</span></td><td class="m"><span class="sw" style="background:${r[2]}"></span>${r[2]}</td><td>${r[3]}</td></tr>`).join('')}</tbody></table></div>
+<div class="tbl"><h3>Contraste</h3><table><thead><tr><th>Par</th><th>Razón</th><th>Mínimo</th></tr></thead><tbody>${contrast(p)}</tbody></table></div></section>`).join('');
+document.querySelectorAll('.tabs').forEach(t=>t.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;t.querySelectorAll('button').forEach(x=>x.setAttribute('aria-selected',x===b))}));
+</script>

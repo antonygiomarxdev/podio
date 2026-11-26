@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Inicio en escritorio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:"Instrument Sans",system-ui,sans-serif}
+.pg{box-sizing:border-box;min-height:900px;background:#0B0D0C;color:#E8EAE6;padding:40px 16px 48px;font-size:16px;line-height:1.5}
+.wrap{max-width:860px;margin:0 auto}
+.sample{display:inline-block;border:1px solid #F2A93A;color:#F2A93A;border-radius:4px;padding:4px 8px;font-size:14px;margin-bottom:16px}
+.hd{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:4px}
+.hd h1{margin:0;font-size:40px;line-height:1.2;letter-spacing:-.02em;color:#B6F23A}
+.meta{font:500 13px "JetBrains Mono",monospace;color:#8B918A}
+.tag{color:#8B918A;margin:0 0 20px}
+.controls{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;margin-bottom:20px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px}
+.tab{background:#141715;color:#8B918A;border:1px solid #262B27;border-radius:4px;padding:6px 12px;font:inherit;font-size:14.4px}
+.tab.on{background:#B6F23A;border-color:#B6F23A;color:#0B0D0C;font-weight:600}
+.country{display:flex;gap:8px;align-items:center;color:#8B918A;font-size:14.4px}
+.country select{background:#141715;color:#E8EAE6;border:1px solid #262B27;border-radius:4px;padding:4px 8px;font:inherit;font-size:14.4px}
+.podium{list-style:none;margin:0 0 16px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:end}
+.podium li{background:#141715;border:1px solid #262B27;border-top:3px solid #262B27;border-radius:8px;padding:16px 8px 14px;text-align:center;overflow-wrap:anywhere}
+.podium li.p1{order:2;border-top-color:#B6F23A;padding-bottom:32px}
+.podium li.p2{order:1}
+.podium li.p3{order:3}
+.av{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;border:2px solid #262B27;background:#141715;color:#8B918A;font-size:14px;font-weight:700;flex:none}
+.p1 .av{border-color:#B6F23A}
+.podium .av{margin-bottom:6px}
+.pos{color:#F2A93A;font-family:"JetBrains Mono",monospace;font-weight:700}
+.val{color:#B6F23A;font-family:"JetBrains Mono",monospace;font-weight:700}
+.podium .pos{display:block;font-size:14.4px}
+.podium .val{display:block;font-size:20px}
+.lg{color:#8B918A;font-size:13.6px}
+.sum{color:#8B918A;font:500 12px/1.4 "JetBrains Mono",monospace}
+.podium .sum{margin-top:2px}
+.rows{list-style:none;margin:0;padding:0}
+.row{display:grid;grid-template-columns:28px 36px minmax(0,1fr) auto auto;gap:14px;align-items:center;padding:8px 0;border-bottom:1px solid #262B27}
+.nm{min-width:0}
+.nm b{font-weight:600}
+.row .sum{text-align:right}
+.fresh{margin:24px 0 0;border-top:1px solid #262B27;padding-top:12px;color:#8B918A;font-size:13.6px}
+.fresh::before{content:"// ";font-family:"JetBrains Mono",monospace;color:#F2A93A}
+.fresh b{color:#E8EAE6;font-weight:600}
+</style>
+</helmet>
+<div class="pg">
+ <div class="wrap">
+  <span class="sample">Datos de ejemplo: aún no hay ranking real.</span>
+  <div class="hd"><h1>Podio</h1><span class="meta">top · 12 meses</span></div>
+  <p class="tag">Los desarrolladores de Latinoamérica que más aportan en GitHub.</p>
+  <div class="controls">
+    <div class="tabs" role="tablist" aria-label="Categoría">
+      <button type="button" role="tab" aria-selected="true" class="tab on">Contribuciones del año</button>
+      <button type="button" role="tab" aria-selected="false" class="tab">Racha actual</button>
+      <button type="button" role="tab" aria-selected="false" class="tab">Racha más larga</button>
+      <button type="button" role="tab" aria-selected="false" class="tab">PRs a otros repos</button>
+      <button type="button" role="tab" aria-selected="false" class="tab">Estrellas</button>
+    </div>
+    <label class="country" for="pais">País
+      <select id="pais"><option>Todos</option></select>
+    </label>
+  </div>
+  <ol class="podium">
+    <li class="p1"><span class="av">A</span><span class="pos">#1</span><div>🇳🇮 Ana Cruz</div><div class="lg">@anacruz</div><span class="val">2.310</span><div class="sum">racha 14d · máx 61d · PRs 22 · ★ 340</div></li>
+    <li class="p2"><span class="av">L</span><span class="pos">#2</span><div>🇦🇷 Lucas Gómez</div><div class="lg">@lgomez</div><span class="val">1.950</span><div class="sum">racha 9d · máx 48d · PRs 17 · ★ 212</div></li>
+    <li class="p3"><span class="av">V</span><span class="pos">#3</span><div>🇨🇴 Valeria Ríos</div><div class="lg">@valeria-dev</div><span class="val">1.640</span><div class="sum">racha 31d · máx 31d · PRs 9 · ★ 87</div></li>
+  </ol>
+  <ol class="rows" start="4">
+    <li class="row"><span class="pos">4</span><span class="av">M</span><div class="nm"><b>🇲🇽 Mateo Salas</b> <span class="lg">@msalas</span></div><span class="sum">racha 5d · máx 40d · PRs 12 · ★ 155</span><span class="val">1.284</span></li>
+    <li class="row"><span class="pos">5</span><span class="av">C</span><div class="nm"><b>🇨🇱 Camila Torres</b> <span class="lg">@camitorres</span></div><span class="sum">racha 22d · máx 36d · PRs 6 · ★ 64</span><span class="val">1.102</span></li>
+    <li class="row"><span class="pos">6</span><span class="av">D</span><div class="nm"><b>🇵🇪 Diego Paredes</b> <span class="lg">@dparedes</span></div><span class="sum">racha 3d · máx 29d · PRs 4 · ★ 23</span><span class="val">987</span></li>
+    <li class="row"><span class="pos">7</span><span class="av">S</span><div class="nm"><b>🇳🇮 Sofía Mendoza</b> <span class="lg">@sofimendoza</span></div><span class="sum">racha 46d · máx 52d · PRs 3 · ★ 41</span><span class="val">854</span></li>
+    <li class="row"><span class="pos">8</span><span class="av">R</span><div class="nm"><b>🇧🇴 Rafael Quispe</b> <span class="lg">@rquispe</span></div><span class="sum">racha 2d · máx 18d · PRs 1 · ★ 9</span><span class="val">640</span></li>
+    <li class="row"><span class="pos">9</span><span class="av">L</span><div class="nm"><b>🇺🇾 Luciana Duarte</b> <span class="lg">@lduarte</span></div><span class="sum">racha 8d · máx 22d · PRs 2 · ★ 30</span><span class="val">511</span></li>
+  </ol>
+  <p class="fresh"><b>Actualizado: 25/11/2026, 06:00</b><br>Contribuciones del año: todas las de tu calendario de GitHub, últimos 12 meses. Se puede inflar con commits automáticos.</p>
+ </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":900}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

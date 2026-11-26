@@ -1,0 +1,346 @@
+<title>Producto podio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column, sticky-free; sections divided by 1px borders, flat surfaces for tables and lists. Dark first, light mirrored. */
+:root {
+  --bg: #0B0D0C;
+  --surface: #141715;
+  --fg: #E8EAE6;
+  --muted: #8B918A;
+  --border: #262B27;
+  --accent: #B6F23A;
+  --accent-ink: #0B0D0C;
+  --warn: #F2A93A;
+  --font-text: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #F5F6F2; --surface: #FFFFFF; --fg: #141715; --muted: #5C635B; --border: #D9DDD5;
+    --accent: #3F6B00; --accent-ink: #FFFFFF; --warn: #8F5A00; color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #F5F6F2; --surface: #FFFFFF; --fg: #141715; --muted: #5C635B; --border: #D9DDD5;
+  --accent: #3F6B00; --accent-ink: #FFFFFF; --warn: #8F5A00; color-scheme: light;
+}
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-text); font-size: 16px; line-height: 1.6;
+  padding-block: 40px 72px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+main { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 48px; }
+h1, h2, h3 { text-wrap: balance; line-height: 1.2; margin: 0; }
+h1 { font-size: clamp(2rem, 7vw, 3rem); font-weight: 700; letter-spacing: -0.02em; }
+h3 { font-size: 1.05rem; font-weight: 600; }
+.links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 0; padding: 0; list-style: none; }
+h2 { font-size: 1.35rem; font-weight: 600; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+p { margin: 0; max-width: 65ch; }
+a { color: var(--accent); }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+code, .mono { font-family: var(--font-mono); font-size: 0.875em; }
+section { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.eyebrow { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.draft { display: inline-flex; align-self: flex-start; font-family: var(--font-mono); font-size: 0.8rem; color: var(--warn); border: 1px solid var(--warn); border-radius: 4px; padding: 2px 10px; }
+.lead { font-size: 1.15rem; }
+.rules { display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.rules li { padding-left: 16px; border-left: 1px solid var(--accent); }
+ol.principles, ul.plain { margin: 0; padding-left: 1.4em; display: flex; flex-direction: column; gap: 10px; }
+ol.principles li::marker { font-family: var(--font-mono); color: var(--accent); }
+.goals { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+.goals li { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; min-width: 0; }
+.goals .tag { font-family: var(--font-mono); color: var(--accent); font-size: 0.8rem; display: block; margin-bottom: 4px; }
+.scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--border); }
+tr:last-child td { border-bottom: 0; }
+th { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+td.id { font-family: var(--font-mono); color: var(--accent); white-space: nowrap; }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.two > div { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; min-width: 0; }
+.two h3 { font-size: 1rem; margin-bottom: 8px; }
+.two ul { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 4px; }
+pre.mermaid { overflow-x: auto; margin: 0; padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; }
+.muted { color: var(--muted); }
+footer { color: var(--muted); font-size: 0.875rem; border-top: 1px solid var(--border); padding-top: 16px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<main>
+  <header style="display:flex;flex-direction:column;gap:14px">
+    <span class="draft">Producto y PRDs aprobados</span>
+    <span class="eyebrow">Definición de producto</span>
+    <h1>podio</h1>
+    <p class="lead">Un ranking abierto de devs de Latinoamérica, armado con su actividad pública en GitHub. Aparecés solo si pedís aparecer, y te podés ir de la misma manera.</p>
+    <p class="muted">Se construye en vivo en TikTok. Las categorías, los países y la web los propone la comunidad. Última actualización: 2026-11-26. Este texto resume los documentos del proyecto; si algo no coincide, mandan los documentos.</p>
+    <ul class="plain">
+      <li><strong>Producto:</strong> aprobado el 2026-11-26.</li>
+      <li><strong>Pedidos REQ-1 a REQ-5:</strong> aceptados.</li>
+      <li><strong>Los 3 PRDs (join, ranking, community):</strong> aprobados el 2026-11-26.</li>
+    </ul>
+  </header>
+
+  <section id="que-es">
+    <h2>Qué es podio</h2>
+    <p>Una página pública muestra un ranking de miembros de toda Latinoamérica, con un filtro por país y una vista por categoría. Todos los días se recalcula con datos públicos de GitHub. Los miembros entran y salen proponiendo un cambio en el repositorio del propio proyecto.</p>
+    <pre class="mermaid">
+flowchart LR
+  D["Dev propone su propia entrada"] --> V["Chequeo: solo su entrada, país válido"]
+  V --> M["El mantenedor lo acepta"]
+  M --> R["Recálculo diario con datos públicos"]
+  R --> W["Ranking público, filtro por país"]
+    </pre>
+    <p>El problema hoy: pocos lugares para que los devs de la región se vean juntos, un número de commits que dice poco y se infla fácil, y listas que incluyen gente que nunca pidió estar. podio pregunta primero y cuenta más que commits.</p>
+    <p class="muted">Hoy: 1 miembro (el dueño), 20 países aceptados, 0 contribuciones de otras personas. La guía para contribuir ya existe, pero nadie de afuera la usó todavía. No sabemos cuántos devs quieren estar en la lista.</p>
+  </section>
+
+  <section id="objetivos">
+    <h2>Los 3 objetivos, en orden</h2>
+    <ol class="goals">
+      <li><span class="tag">a</span><strong>Una comunidad armada en vivo.</strong> Gente del chat de TikTok contribuyendo con pull requests.</li>
+      <li><span class="tag">b</span><strong>Una vitrina de devs latinos.</strong> Un solo ranking de la región, con filtro por país.</li>
+      <li><span class="tag">c</span><strong>Competencia sana.</strong> Posiciones que cambian, para que la gente vuelva a ver el movimiento.</li>
+    </ol>
+  </section>
+
+  <section id="principios">
+    <h2>Principios</h2>
+    <ol class="principles">
+      <li><strong>Nadie aparece sin pedirlo.</strong> Solo se lista a alguien a través de su propia propuesta.</li>
+      <li><strong>Solo tu propia entrada.</strong> Una propuesta puede agregar, cambiar o quitar únicamente la entrada de quien la hace. Nadie actúa por otra persona.</li>
+      <li><strong>Solo datos públicos.</strong> Los números salen de datos públicos de GitHub. La actividad privada cuenta solo si la persona eligió mostrarla en su perfil público, y únicamente como el conteo diario que GitHub muestra a todos. Lo que se cuenta en repos ajenos usa solo repos públicos.</li>
+      <li><strong>Muchas formas de destacar.</strong> Ningún número único decide quién es bueno. Cada categoría es un ranking aparte.</li>
+      <li><strong>Los límites se dicen.</strong> Donde un número se puede inflar, la página y los documentos lo dicen en vez de esconderlo.</li>
+      <li><strong>Se construye a la vista de todos.</strong> Las categorías, los países y la página cambian con propuestas que cualquiera puede hacer. El proceso para proponer está escrito.</li>
+      <li><strong>Español para la gente, inglés para el código.</strong> Todo lo que lee un visitante está en español con voseo. El código y los commits van en inglés. La comunidad puede escribir issues y pull requests en español o en inglés.</li>
+    </ol>
+  </section>
+
+  <section id="casos-de-uso">
+    <h2>Casos de uso</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>ID</th><th>Nombre</th><th>Qué pasa</th></tr></thead>
+      <tbody>
+        <tr><td class="id">UC-1</td><td>Sumarte al ranking</td><td>Un dev propone una entrada para sí mismo (usuario de GitHub y país) y aparece después del próximo recálculo diario.</td></tr>
+        <tr><td class="id">UC-2</td><td>Salir del ranking</td><td>Un miembro propone quitar su propia entrada y desaparece después del próximo recálculo.</td></tr>
+        <tr><td class="id">UC-3</td><td>Ver el ranking</td><td>Un visitante abre la página y ve a los miembros ordenados en una categoría, con foto, nombre, país y valor. La primera vista es contribuciones del año.</td></tr>
+        <tr><td class="id">UC-4</td><td>Filtrar por país</td><td>Un visitante limita el ranking a un país y ve las posiciones dentro de ese país.</td></tr>
+        <tr><td class="id">UC-5</td><td>Cambiar de categoría</td><td>Un visitante elige otra categoría y ve ese ranking. Las categorías son: contribuciones del año, racha actual, racha más larga, PRs aceptados en repos ajenos y estrellas.</td></tr>
+        <tr><td class="id">UC-6</td><td>Saber qué tan fresco y qué tan justo es</td><td>Un visitante ve cuándo se calcularon los datos y qué cuenta cada categoría, incluidas las formas conocidas de inflarla.</td></tr>
+        <tr><td class="id">UC-7</td><td>Proponer una categoría o un cambio</td><td>Una persona de la comunidad propone una categoría, un país o un cambio en la página, y el proceso escrito le dice qué hace falta.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="alcance">
+    <h2>Alcance de la versión 1</h2>
+    <div class="two">
+      <div>
+        <h3>Entra</h3>
+        <ul>
+          <li>Sumarte y salir con tu propia propuesta.</li>
+          <li>Cinco categorías sobre los últimos 12 meses.</li>
+          <li>Un ranking de toda la región con filtro por país.</li>
+          <li>Actualización diaria.</li>
+          <li>Una página que anda bien en el celular.</li>
+          <li>Un proceso escrito para proponer categorías.</li>
+          <li>La lista de 20 países es final para la v1. Una propuesta de la comunidad puede agregar un país.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>No entra</h3>
+        <ul>
+          <li>Puntajes que combinen categorías.</li>
+          <li>Equipos u organizaciones.</li>
+          <li>Datos de repos privados.</li>
+          <li>Cuentas, login o edición en la página.</li>
+          <li>Notificaciones.</li>
+          <li>Historial del ranking en el tiempo.</li>
+          <li>Insignias para el perfil de cada persona.</li>
+          <li>Países fuera de la lista.</li>
+          <li>Protección contra rachas o totales anuales inflados.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="muted">Límite conocido: las rachas y las contribuciones del año se pueden inflar con commits automáticos. En la v1 se acepta y se dice. Si se te ocurre una categoría más difícil de inflar, proponela.</p>
+  </section>
+
+  <section id="partes">
+    <h2>Las 3 partes del trabajo</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>Parte</th><th>Qué cubre</th><th>Casos de uso</th></tr></thead>
+      <tbody>
+        <tr><td class="id">join</td><td>Entrar y salir con tu propia propuesta, y los chequeos que protegen el consentimiento.</td><td class="mono">UC-1, UC-2</td></tr>
+        <tr><td class="id">ranking</td><td>Qué se cuenta, cómo se ordena, la página, el filtro y la frescura de los datos.</td><td class="mono">UC-3, UC-4, UC-5, UC-6</td></tr>
+        <tr><td class="id">community</td><td>Cómo proponen categorías, países y cambios de página las personas de afuera.</td><td class="mono">UC-7</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted">Orden de trabajo: join, ranking, community.</p>
+  </section>
+
+  <section id="cada-parte">
+    <h2>Qué tiene que hacer cada parte</h2>
+    <p class="muted">Resumen de cada PRD (aprobados el 2026-11-26). Cada requisito se puede comprobar con un sí o un no.</p>
+
+    <h3>join: sumarse y salir</h3>
+    <p>Un dev se suma proponiendo una entrada propia y se va proponiendo quitarla. Nadie puede agregar, cambiar ni quitar la entrada de otra persona. El único chequeo de país es que esté en la lista aceptada: el país es el que declara cada miembro. Una propuesta rechazada explica por qué, en español.</p>
+    <div class="scroll"><table>
+      <tbody>
+        <tr><td class="id">R-JOIN-1</td><td>Un dev puede sumarse proponiendo una entrada propia: su usuario de GitHub y un país. Cuando se acepta, aparece después del próximo recálculo diario.</td></tr>
+        <tr><td class="id">R-JOIN-2</td><td>Se rechaza una propuesta cuyo país no esté en la lista de países aceptados. La lista tiene 20 países y una propuesta de la comunidad puede agregar uno (D-14).</td></tr>
+        <tr><td class="id">R-JOIN-3</td><td>El país de una entrada es el que declara el miembro. No se verifica (D-17).</td></tr>
+        <tr><td class="id">R-JOIN-4</td><td>Una propuesta solo puede agregar, cambiar o quitar la entrada de quien la hace. Si toca la de otra persona, se rechaza antes de poder aceptarse (D-2).</td></tr>
+        <tr><td class="id">R-JOIN-5</td><td>Un miembro puede salir proponiendo quitar su entrada. Desaparece del ranking después del próximo recálculo diario.</td></tr>
+        <tr><td class="id">R-JOIN-6</td><td>Cada persona tiene como máximo una entrada, identificada por su usuario de GitHub.</td></tr>
+        <tr><td class="id">R-JOIN-7</td><td>Una propuesta rechazada le dice a su autor, en español, qué regla rompió y qué cambiar.</td></tr>
+        <tr><td class="id">R-JOIN-8</td><td>Si cambia el usuario de GitHub de un miembro o la cuenta desaparece, la entrada se queda pero no se muestra mientras no se encuentre el usuario. El miembro lo arregla con su propia propuesta (D-24).</td></tr>
+        <tr><td class="id">R-JOIN-9</td><td>Se guarda el momento en que se aceptó cada entrada, para poder saber el orden de aceptación (D-28). Se mantiene si el miembro edita su entrada (por ejemplo, cambia de país) y empieza de nuevo si se va y vuelve a anotarse (L-7).</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>ranking: qué se cuenta y cómo se ordena</h3>
+    <p>La página muestra a todos los miembros de la región en un solo ranking, ordenado por una categoría a la vez, con filtro por país. Son cinco categorías, cada una un ranking aparte sobre los últimos 12 meses de actividad pública de GitHub, y la página abre en contribuciones del año. Todo se recalcula cada día, y la página dice cuándo y qué cuenta cada categoría, incluida la forma de inflarla.</p>
+    <div class="scroll"><table>
+      <tbody>
+        <tr><td class="id">R-RANKING-1</td><td>Un visitante ve a los miembros ordenados en una categoría. Cada fila muestra posición, avatar de GitHub, nombre y usuario, bandera del país, el valor de la categoría elegida y un resumen compacto de las otras categorías (D-20).</td></tr>
+        <tr><td class="id">R-RANKING-2</td><td>La página abre en la categoría contribuciones del año (D-12).</td></tr>
+        <tr><td class="id">R-RANKING-3</td><td>En la v1 hay exactamente cinco categorías, cada una un ranking aparte sobre los últimos 12 meses (D-3): contribuciones del año, racha actual, racha más larga, pull requests aceptados en repos ajenos y estrellas.</td></tr>
+        <tr><td class="id">R-RANKING-4</td><td>Contribuciones del año es el total del calendario del perfil público. La racha actual son los días seguidos con al menos una contribución, contados hacia atrás desde hoy, o desde ayer si hoy todavía no hay ninguna; el día es el que registra el calendario de GitHub (L-5). La racha más larga es la mayor de esas rachas en los últimos 12 meses.</td></tr>
+        <tr><td class="id">R-RANKING-5</td><td>Los pull requests aceptados cuentan los que hizo el miembro y se aceptaron en cualquier repo público que no sea de su cuenta personal, incluidas las organizaciones a las que pertenece (D-4, D-23).</td></tr>
+        <tr><td class="id">R-RANKING-6</td><td>Estrellas es la suma de las estrellas de los repos públicos propios del miembro, sin forks, hasta 100 repos (L-4).</td></tr>
+        <tr><td class="id">R-RANKING-7</td><td>Solo se usan datos públicos. La actividad privada cuenta solo si el miembro eligió mostrarla en su perfil público, y únicamente como el conteo diario que GitHub muestra a todos (D-4).</td></tr>
+        <tr><td class="id">R-RANKING-8</td><td>Un visitante puede limitar el ranking a un país y ve las posiciones dentro de ese país. Sin filtro, el ranking cubre toda la región en una sola lista (D-10). El filtro muestra los 20 países aceptados; si elegís uno sin miembros, aparece una invitación a sumarse (D-29).</td></tr>
+        <tr><td class="id">R-RANKING-9</td><td>Todas las categorías se recalculan cada día y la página muestra la fecha del último cálculo.</td></tr>
+        <tr><td class="id">R-RANKING-10</td><td>Para cada categoría, la página dice qué cuenta y las formas conocidas de inflarla, incluido que las rachas y los totales del año se pueden inflar con commits automáticos (D-9).</td></tr>
+        <tr><td class="id">R-RANKING-11</td><td>Todo lo que lee un visitante está en español con voseo. La página se diseña primero para el celular, vertical, de unos 400px de ancho, y la de escritorio es la versión ancha de la misma página (D-18).</td></tr>
+        <tr><td class="id">R-RANKING-12</td><td>Arriba del ranking hay un podio con el 2.º, el 1.º y el 3.º puesto, y la lista de abajo sigue desde el 4.º (D-19).</td></tr>
+        <tr><td class="id">R-RANKING-13</td><td>Si hay empate en una categoría, queda más arriba quien llegó primero a ese valor. Si siguen empatados (por ejemplo, dos rachas actuales iguales), queda más arriba quien se anotó primero, así que cada posición es distinta (D-28).</td></tr>
+        <tr><td class="id">R-RANKING-14</td><td>Un miembro con valor 0 en una categoría se muestra al final, con el valor 0 (D-22).</td></tr>
+        <tr><td class="id">R-RANKING-15</td><td>Para cada miembro y categoría se sabe en qué momento llegó a su valor actual, para poder desempatar (D-28). No se guarda ningún otro historial.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>community: proponer cambios</h3>
+    <p>Cualquiera puede proponer una categoría nueva, un país nuevo o un cambio en la página, y un proceso escrito en español dice qué necesita cada propuesta. Solo el mantenedor acepta propuestas. Contribuir es opcional: podio es una actividad tranquila del stream y nadie está obligado a proponer nada.</p>
+    <div class="scroll"><table>
+      <tbody>
+        <tr><td class="id">R-COMMUNITY-1</td><td>Una persona que no es el mantenedor puede proponer una categoría nueva, un país nuevo o un cambio en la página.</td></tr>
+        <tr><td class="id">R-COMMUNITY-2</td><td>Un proceso escrito en español le dice a la persona qué tiene que incluir cada tipo de propuesta, antes de hacerla.</td></tr>
+        <tr><td class="id">R-COMMUNITY-3</td><td>Una propuesta de categoría dice qué se mide y cómo se calcula con datos públicos de GitHub, por qué es justa para participantes de distinto tamaño, y da un ejemplo con al menos un miembro real.</td></tr>
+        <tr><td class="id">R-COMMUNITY-4</td><td>No se acepta una propuesta de categoría que necesite datos privados (principio 3).</td></tr>
+        <tr><td class="id">R-COMMUNITY-5</td><td>Una propuesta pasa a ser parte de podio solo cuando el mantenedor la acepta. El mantenedor decide las categorías.</td></tr>
+        <tr><td class="id">R-COMMUNITY-6</td><td>Una propuesta de la comunidad puede agregar un país nuevo (D-14). La lista de países sigue siendo final para la v1 hasta que se acepte una propuesta así.</td></tr>
+        <tr><td class="id">R-COMMUNITY-7</td><td>Se llega al proceso desde la página principal del proyecto.</td></tr>
+        <tr><td class="id">R-COMMUNITY-8</td><td>Una propuesta de país trae el código del país, su nombre y por qué. Una propuesta de cambio de página trae qué cambia, por qué, y que sigue funcionando en el celular (D-25).</td></tr>
+        <tr><td class="id">R-COMMUNITY-9</td><td>Las personas de afuera pueden escribir issues y pull requests en español o en inglés. El código y los commits siguen en inglés (D-26, ajusta D-7).</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="como-se-ve">
+    <h2>Cómo se va a ver</h2>
+    <p>La dirección visual la eligieron el dueño y la comunidad: la propuesta C, "Mezcla" (D-27). El texto va en Instrument Sans, los números en monoespaciada, con un podio escalonado compacto y filas densas con un toque de consola.</p>
+    <ul class="plain">
+      <li><strong>Primero el celular (D-18):</strong> vertical, de unos 400px. La versión de escritorio es la misma página, más ancha.</li>
+      <li><strong>Podio de verdad (D-19):</strong> arriba el 2.º, el 1.º y el 3.º; la lista sigue desde el 4.º.</li>
+      <li><strong>Cada fila (D-20):</strong> posición, avatar de GitHub, nombre y usuario, bandera del país, el valor de la categoría elegida y un resumen compacto de las otras categorías.</li>
+    </ul>
+    <ul class="links">
+      <li><a href="https://claude.ai/artifact/QMHp5jDbVbkE1MSQ82FDxZ">Las propuestas visuales</a></li>
+      <li><a href="https://claude.ai/artifact/Vy859pHrivpwuhvCBqsavr">El sistema de diseño</a></li>
+      <li><a href="https://claude.ai/artifact/25h3AZ1uTmzfGfYJ5xHkQh">Los mockups (6 pantallas)</a></li>
+    </ul>
+  </section>
+
+  <section id="metas">
+    <h2>Metas de éxito</h2>
+    <p>Son orientativas, no obligatorias. podio es una actividad tranquila del stream y nadie está obligado a contribuir (D-16). A 30 días de la primera página pública:</p>
+    <ul class="plain">
+      <li>al menos 20 miembros de al menos 5 países;</li>
+      <li>al menos 5 pull requests aceptados de personas que no son el dueño;</li>
+      <li>al menos 1 cambio propuesto por alguien de la comunidad y aceptado.</li>
+    </ul>
+    <p class="muted">El objetivo c (que la gente vuelva) no tiene meta en la v1.</p>
+  </section>
+
+  <section id="decisiones">
+    <h2>Decisiones tomadas</h2>
+    <p class="muted">Del 2026-11-25 y del 2026-11-26. Las D son decisiones del dueño; las L, decisiones de diseño del equipo.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>ID</th><th>Decisión</th></tr></thead>
+      <tbody>
+        <tr><td class="id">D-1</td><td>Una entrada de miembro es un archivo por persona, con su usuario de GitHub y un código de país. Solo se aceptan países de Latinoamérica.</td></tr>
+        <tr><td class="id">D-2</td><td>Una propuesta solo puede agregar, cambiar o borrar la entrada de quien la hace. El chequeo corre automáticamente contra el autor.</td></tr>
+        <tr><td class="id">D-3</td><td>Las categorías son: contribuciones del año, racha actual, racha más larga, PRs aceptados en repos ajenos y estrellas.</td></tr>
+        <tr><td class="id">D-4</td><td>Solo datos públicos. Las contribuciones privadas cuentan si la persona eligió mostrarlas en su perfil público, porque eso es dato público. La categoría de PRs busca solo en repos públicos.</td></tr>
+        <tr><td class="id">D-5</td><td>Los datos se recalculan todos los días y la página se publica sin guardar los datos en el repositorio.</td></tr>
+        <tr><td class="id">D-6</td><td>La página es estática, sin framework ni paso de build, con la identidad visual del dueño (colores, tipografías, bordes planos de 1px).</td></tr>
+        <tr><td class="id">D-7</td><td>El primer miembro es el dueño. Los textos para la gente van en español con voseo; el código, los commits y los issues van en inglés.</td></tr>
+        <tr><td class="id">D-8</td><td>Objetivos en orden de prioridad: (a) una comunidad armada en vivo en TikTok, con gente del chat contribuyendo; (b) una vitrina de devs latinos; (c) competencia sana que haga volver a la gente a ver el movimiento.</td></tr>
+        <tr><td class="id">D-9</td><td>La protección contra trampas queda fuera de la v1. Las rachas y las contribuciones del año se pueden inflar; el límite se documenta y la comunidad propone mejores categorías después.</td></tr>
+        <tr><td class="id">D-10</td><td>La vista principal es un solo ranking de Latinoamérica con filtro por país.</td></tr>
+        <tr><td class="id">D-11</td><td>Los commits no llevan líneas de atribución de ningún tipo.</td></tr>
+        <tr><td class="id">L-1</td><td>El código que ya existe se documenta con la cadena de documentos, no se reescribe. Los defectos conocidos del traspaso pasan a ser arreglos con su propio documento cuando existan los FRDs.</td></tr>
+        <tr><td class="id">L-2</td><td>Se arranca la cadena de documentos desde cero y no se adopta una existente: el proyecto solo tenía un traspaso y un README.</td></tr>
+        <tr><td class="id">L-3</td><td>Los límites de la API a gran escala (más de unos cientos de miembros) se resuelven en el TP, no en PRODUCT.</td></tr>
+        <tr><td class="id">D-12</td><td>La categoría que se ve al abrir la página es contribuciones del año.</td></tr>
+        <tr><td class="id">D-13</td><td>Metas de éxito a 30 días de la primera página pública: al menos 20 miembros de al menos 5 países, al menos 5 pull requests aceptados de personas que no son el dueño y al menos 1 cambio propuesto por la comunidad y aceptado.</td></tr>
+        <tr><td class="id">D-14</td><td>La lista de 20 países es final para la v1. Una propuesta de la comunidad puede agregar un país.</td></tr>
+        <tr><td class="id">D-15</td><td>Se descarta la afirmación sin verificar de que otros rankings listan países enteros sin preguntar. El problema se plantea así: "podio pregunta primero y cuenta más que commits".</td></tr>
+        <tr><td class="id">D-16</td><td>El objetivo c no tiene meta en la v1. Las metas de D-13 son orientativas, no obligatorias: podio es una actividad tranquila del stream y nadie está obligado a contribuir.</td></tr>
+        <tr><td class="id">D-17</td><td>El país de cada miembro es el que declara. No se verifica; solo se chequea que esté en la lista de países aceptados.</td></tr>
+        <tr><td class="id">L-4</td><td>La categoría estrellas suma las estrellas de los repos públicos propios del miembro, sin forks, hasta 100 repos.</td></tr>
+        <tr><td class="id">D-18</td><td>La página se diseña primero para el celular (vertical, unos 400px); la de escritorio es la versión ancha de la misma página.</td></tr>
+        <tr><td class="id">D-19</td><td>Arriba del ranking hay un podio de verdad (2.º, 1.º, 3.º); la lista sigue desde el 4.º.</td></tr>
+        <tr><td class="id">D-20</td><td>Cada fila muestra posición, avatar de GitHub, nombre y usuario, bandera del país, el valor de la categoría elegida y un resumen compacto de las otras categorías.</td></tr>
+        <tr><td class="id">L-5</td><td>La racha actual cuenta los días seguidos hacia atrás desde hoy, o desde ayer si hoy todavía no hay contribución; el día es el que registra el calendario de GitHub.</td></tr>
+        <tr><td class="id">L-6</td><td>El criterio de frescura del PRD de ranking es orientativo, como D-13 y D-16, no un requisito.</td></tr>
+        <tr><td class="id">D-21</td><td class="muted">Reemplazada por D-28. Desempate por fecha de alta.</td></tr>
+        <tr><td class="id">D-22</td><td>Un miembro con valor 0 en una categoría se muestra al final, con 0.</td></tr>
+        <tr><td class="id">D-23</td><td>La categoría de pull requests aceptados en repos ajenos cuenta los de cualquier repo público que no sea de la cuenta personal del miembro, incluidas las organizaciones a las que pertenece.</td></tr>
+        <tr><td class="id">D-24</td><td>Si cambia el usuario de GitHub de un miembro o la cuenta desaparece, la entrada se queda pero no se muestra mientras no se encuentre el usuario; el miembro lo arregla con su propia propuesta.</td></tr>
+        <tr><td class="id">D-25</td><td>Una propuesta de país trae el código del país, su nombre y por qué; una propuesta de cambio de página trae qué cambia, por qué, y que sigue funcionando en el celular.</td></tr>
+        <tr><td class="id">D-26</td><td>Las personas de afuera pueden escribir issues y pull requests en español o en inglés; el código y los commits siguen en inglés (ajusta D-7).</td></tr>
+        <tr><td class="id">D-27</td><td>La dirección visual es la propuesta C, "Mezcla": texto en Instrument Sans, números en monoespaciada, podio escalonado compacto y filas densas con un toque de consola. La eligieron el dueño y la comunidad.</td></tr>
+        <tr><td class="id">D-28</td><td>En un empate queda más arriba quien llegó primero a ese valor; si siguen empatados, quien se anotó primero.</td></tr>
+        <tr><td class="id">D-29</td><td>El filtro de país muestra los 20 países aceptados; un país sin miembros muestra una invitación a sumarse.</td></tr>
+        <tr><td class="id">L-7</td><td>La fecha de alta se mantiene si el miembro edita su entrada y empieza de nuevo si se va y vuelve.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="pedidos">
+    <h2>De dónde sale cada cosa</h2>
+    <p class="muted">Cada parte del producto responde a un pedido del dueño, hecho en el stream donde nació podio (2026-11-25). Los textos están parafraseados: no se guardó la cita textual.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Pedido</th><th>Qué se pidió</th><th>Parte</th></tr></thead>
+      <tbody>
+        <tr><td class="id">REQ-1</td><td>Construirlo en vivo con el chat.</td><td class="mono">community</td></tr>
+        <tr><td class="id">REQ-2</td><td>Que aparezca solo quien se anota.</td><td class="mono">join</td></tr>
+        <tr><td class="id">REQ-3</td><td>Más formas de destacar que contar commits.</td><td class="mono">ranking</td></tr>
+        <tr><td class="id">REQ-4</td><td>Mostrar a los devs de Latinoamérica.</td><td class="mono">ranking</td></tr>
+        <tr><td class="id">REQ-5</td><td>Una razón para volver.</td><td class="mono">ranking</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="preguntas">
+    <h2>Preguntas abiertas</h2>
+    <p>Ninguna. Las preguntas de los PRDs las respondió el dueño el 2026-11-26 y quedaron como decisiones D-22 a D-28.</p>
+    <p class="muted">Próximo paso: escribir los FRDs, una función a la vez, y después la propuesta técnica.</p>
+  </section>
+
+  <section id="proponer">
+    <h2>Cómo proponer cambios</h2>
+    <p>Cualquiera puede proponer una categoría nueva, un país o un cambio en la página. Se hace con un pull request o un issue en el repositorio de podio, y el proceso escrito dice qué hace falta en cada caso. Lo encontrás en <code>CONTRIBUTING.md</code> del <a href="https://github.com/antonygiomarxdev/podio">repositorio de podio</a>.</p>
+    <p>Para sumarte al ranking: hacé fork, agregá tu archivo con tu usuario de GitHub y tu país, y abrí un pull request. Un chequeo automático lo valida y, cuando se acepta, aparecés en el podio al día siguiente. Un pull request solo puede tocar el archivo de quien lo abre.</p>
+  </section>
+
+  <footer>Fuente: <code>docs/PRODUCT.md</code>, <code>docs/requests/</code>, <code>docs/DECISIONS.md</code> y los PRDs de <code>docs/join/</code>, <code>docs/ranking/</code> y <code>docs/community/</code>. Se actualiza con cada cambio en los documentos.</footer>
+</main>

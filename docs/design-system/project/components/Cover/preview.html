@@ -1,0 +1,51 @@
+<!-- @dsCard height=288 -->
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+body{padding:0;margin:0}
+.cv{position:relative;width:960px;height:288px;overflow:hidden;background:var(--bg)}
+.cv svg{position:absolute;inset:0}
+.first{fill:var(--accent);rx:var(--radius-md)}
+.second{fill:var(--amber);rx:var(--radius-md)}
+.third{fill:var(--text);rx:var(--radius-md)}
+.dot{fill:var(--muted)}
+.txt{position:absolute;left:var(--space-6);bottom:var(--space-6);width:440px}
+.name{margin:0;font:700 120px/.9 var(--font-sans);letter-spacing:-.02em;color:var(--text)}
+.tag{margin:var(--space-3) 0 0;font:400 14px/1.5 var(--font-sans);color:var(--muted)}
+</style></head><body>
+<div class="cv">
+<svg width="960" height="288" viewBox="0 0 960 288" aria-hidden="true">
+<!--
+blocks: accent 120x248, amber 120x168, text 120x128 (widths 3 x space-8, bottoms bleed off the floor)
+arrangement: three flush slabs on the floor, tallest in the centre, the podium silhouette; tops rounded by radius-md, bottoms bleed off the edge
+pattern: a literal motif (podium), so a 3x6 dot grid in muted at space-5 pitch sits to the right, small and secondary
+steps and radii: space-5 pitch, space-8 multiples, radius-md corners
+-->
+<rect class="second" x="520" y="128" width="120" height="168"/>
+<rect class="first" x="640" y="48" width="120" height="248"/>
+<rect class="third" x="760" y="168" width="120" height="128"/>
+<g>
+<circle class="dot" cx="900" cy="48" r="2"/>
+<circle class="dot" cx="916" cy="48" r="2"/>
+<circle class="dot" cx="932" cy="48" r="2"/>
+<circle class="dot" cx="900" cy="64" r="2"/>
+<circle class="dot" cx="916" cy="64" r="2"/>
+<circle class="dot" cx="932" cy="64" r="2"/>
+<circle class="dot" cx="900" cy="80" r="2"/>
+<circle class="dot" cx="916" cy="80" r="2"/>
+<circle class="dot" cx="932" cy="80" r="2"/>
+<circle class="dot" cx="900" cy="96" r="2"/>
+<circle class="dot" cx="916" cy="96" r="2"/>
+<circle class="dot" cx="932" cy="96" r="2"/>
+<circle class="dot" cx="900" cy="112" r="2"/>
+<circle class="dot" cx="916" cy="112" r="2"/>
+<circle class="dot" cx="932" cy="112" r="2"/>
+<circle class="dot" cx="900" cy="128" r="2"/>
+<circle class="dot" cx="916" cy="128" r="2"/>
+<circle class="dot" cx="932" cy="128" r="2"/>
+</g>
+</svg>
+<div class="txt"><h1 class="name">Podio</h1><p class="tag">Los desarrolladores de Latinoamérica que más aportan en GitHub.</p></div>
+</div>
+</body></html>
